@@ -1,6 +1,7 @@
 package com.jee.jeejsfcditutorialsourcecode.scope;
 
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,15 +21,29 @@ public class PollBean implements Serializable {
     private String selectedOption;
 
 
-    /**
-     * This action method returns void, which means JSF will stay on the same view.
-     * Because the bean is ViewScoped, its state (the vote counts) will be preserved.
-     */
+//    /**
+//     * This action method returns void, which means JSF will stay on the same view.
+//     * Because the bean is ViewScoped, its state (the vote counts) will be preserved.
+//     */
+//    public void vote() {
+//        if ("java".equals(selectedOption)) {
+//            votesForJava++;
+//        } else if ("csharp".equals(selectedOption)) {
+//            votesForCSharp++;
+//        }
+//    }
+
+
+    @Inject // Inject the one-and-only instance of our stats bean
+    private SiteStatsBean siteStatsBean;
+
     public void vote() {
         if ("java".equals(selectedOption)) {
             votesForJava++;
+            siteStatsBean.incrementVoteCount(); // Increment global counter
         } else if ("csharp".equals(selectedOption)) {
             votesForCSharp++;
+            siteStatsBean.incrementVoteCount(); // Increment global counter
         }
     }
 }
