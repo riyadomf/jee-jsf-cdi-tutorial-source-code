@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 @Named
 @ViewScoped
+// ViewScoped beans should always be Serializable as a best practice.
 public class PollBean implements Serializable {
 
     @Getter
