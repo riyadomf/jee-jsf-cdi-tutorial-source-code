@@ -1,5 +1,7 @@
 package com.jee.jeejsfcditutorialsourcecode.scope;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 import lombok.Getter;
@@ -22,4 +24,22 @@ public class FeedbackBean {
         // After this redirect, the RequestScoped bean is gone.
         return "thankyou.xhtml?faces-redirect=true";
     }
+
+
+
+
+
+
+
+
+    @PostConstruct
+    public void init() {
+        System.out.println(">>> RequestScoped bean created: " + this);
+    }
+
+    @PreDestroy
+    public void destroy() {
+        System.out.println(">>> RequestScoped bean destroyed: " + this);
+    }
+
 }

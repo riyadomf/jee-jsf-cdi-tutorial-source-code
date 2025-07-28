@@ -1,5 +1,7 @@
 package com.jee.jeejsfcditutorialsourcecode.scope;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -38,12 +40,29 @@ public class PollBean implements Serializable {
     private SiteStatsBean siteStatsBean;
 
     public void vote() {
-        if ("java".equals(selectedOption)) {
-            votesForJava++;
-            siteStatsBean.incrementVoteCount(); // Increment global counter
-        } else if ("csharp".equals(selectedOption)) {
-            votesForCSharp++;
-            siteStatsBean.incrementVoteCount(); // Increment global counter
-        }
+            if ("java".equals(selectedOption)) {
+                votesForJava++;
+                siteStatsBean.incrementVoteCount(); // Increment global counter
+            } else if ("csharp".equals(selectedOption)) {
+                votesForCSharp++;
+                siteStatsBean.incrementVoteCount(); // Increment global counter
+            }
+    }
+
+
+
+
+
+
+
+
+    @PostConstruct
+    public void init() {
+        System.out.println(">>> ViewScoped bean created: " + this);
+    }
+
+    @PreDestroy
+    public void destroy() {
+        System.out.println(">>> ViewScoped bean destroyed: " + this);
     }
 }
