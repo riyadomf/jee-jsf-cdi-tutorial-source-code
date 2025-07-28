@@ -17,8 +17,9 @@ public class UserProfileBean implements Serializable {
     @Getter @Setter
     private String theme = "light"; // Default theme
 
-    public void toggleTheme() {
+    public String toggleTheme() {
         this.theme = "light".equals(theme) ? "dark" : "light";
+        return "page1?faces-redirect=true";
     }
 
 

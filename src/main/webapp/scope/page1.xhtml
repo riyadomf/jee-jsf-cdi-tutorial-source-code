@@ -12,8 +12,7 @@
         <p>
             <h:outputText value="This is the first page. The current theme is:  #{userProfileBean.theme}"/></p>
 
-        <p:commandButton value="Toggle Theme" action="#{userProfileBean.toggleTheme}"
-                         update="@all" />
+        <p:commandButton value="Toggle Theme" action="#{userProfileBean.toggleTheme}" />
         <br/><br/>
         <h:link outcome="page2" value="Go to Page 2" styleClass="#{userProfileBean.theme}"/>
     </h:form>
