@@ -16,7 +16,8 @@
          </p:selectOneRadio>
 
          <br/>
-         <p:commandButton value="Vote!" action="#{pollBean.vote}" update="resultsPanel"/>
+
+         <p:commandButton value="Vote!" action="#{pollBean.viewVote}" update="resultsPanel"/>
 
          <p:panel id="resultsPanel" header="Live Results" style="margin-top:20px;">
             <h:panelGrid columns="2">
@@ -26,16 +27,8 @@
                <h:outputText value="Votes for C#:"/>
                <h:outputText value="#{pollBean.votesForCSharp}"/>
             </h:panelGrid>
-
-            <div style="position: fixed; bottom: 10px; right: 10px; background-color: lightgray; padding: 5px; border: 1px solid black;">
-               <h:outputText value="Total Site Votes: #{siteStatsBean.totalVotes}"/>
-            </div>
          </p:panel>
       </p:panel>
-
-
    </h:form>
-
-
 </h:body>
 </html>

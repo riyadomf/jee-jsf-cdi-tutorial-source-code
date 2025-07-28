@@ -1,4 +1,4 @@
-package com.jee.jeejsfcditutorialsourcecode.scope;
+package com.jee.tutorial.jsfcdiexample.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

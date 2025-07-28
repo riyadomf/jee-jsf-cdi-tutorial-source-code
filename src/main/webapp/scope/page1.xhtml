@@ -13,6 +13,8 @@
             <h:outputText value="This is the first page. The current theme is:  #{userProfileBean.theme}"/></p>
 
         <p:commandButton value="Toggle Theme" action="#{userProfileBean.toggleTheme}" />
+        <p:divider/>
+        <p:commandButton styleClass="ui-button-outlined ui-button-danger" value="Destory Session" action="#{userProfileBean.destroySession}"/>
         <br/><br/>
         <h:link outcome="page2" value="Go to Page 2" styleClass="#{userProfileBean.theme}"/>
     </h:form>

@@ -1,4 +1,4 @@
-package com.jee.jeejsfcditutorialsourcecode.scope;
+package com.jee.tutorial.jsfcdiexample.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
@@ -25,15 +25,6 @@ public class SiteStatsBean {
     }
 
 
-
-
-
-
-//    @PostConstruct
-//    public void init() {
-//        totalVotes = new AtomicInteger(0);
-//        System.out.println("Application-scoped SiteStatsBean created!");
-//    }
 
     @PostConstruct
     public void init() {

@@ -1,9 +1,12 @@
-package com.jee.jeejsfcditutorialsourcecode.scope;
+package com.jee.tutorial.jsfcdiexample.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +16,8 @@ import java.io.Serializable;
 @SessionScoped
 // SessionScoped beans MUST be Serializable for clustering and server restarts.
 public class UserProfileBean implements Serializable {
+    @Inject
+    HttpServletRequest request;
 
     @Getter @Setter
     private String theme = "light"; // Default theme
@@ -22,7 +27,11 @@ public class UserProfileBean implements Serializable {
         return "page1?faces-redirect=true";
     }
 
-
+    public String destroySession() throws ServletException {
+        request.logout();
+        request.getSession().invalidate();
+        return "page1?faces-redirect=true";
+    }
 
 
     @PostConstruct
