@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Session Scope - Page 2</title>
+    <h:outputStylesheet name="css/style.css"/>
+</h:head>
+<h:body styleClass="#{userProfileBean.theme}">
+    <h1>Page 2</h1>
+    <p>
+        <h:outputText value="This is the second page. The current theme is still: #{userProfileBean.theme}"/>
+    </p>
+    <p>The choice we made on Page 1 was remembered!</p>
+    <br/>
+    <h:link outcome="page1" value="Go back to Page 1" styleClass="#{userProfileBean.theme}"/>
+</h:body>
+</html>

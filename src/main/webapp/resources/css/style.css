@@ -1,0 +1,4 @@
+body.light { background-color: #ffffff; color: #000000; }
+body.dark { background-color: #2b2b2b; color: #bbbbbb; }
+a.light { color: blue; }
+a.dark { color: cyan; }
