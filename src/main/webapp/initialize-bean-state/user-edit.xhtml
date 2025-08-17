@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:p="http://primefaces.org/ui">
+
+<!--
+    The <f:metadata> block is processed before the rest of the page is rendered.
+    It's the perfect place to handle URL parameters and execute pre-render actions.
+-->
+<f:metadata>
+    <!--
+        1. BEST PRACTICE: Use OmniFaces <o:viewParam>.
+        It binds the 'userId' URL parameter to the bean's 'userId' property.
+        'required="true"' validation runs EARLY. If it fails, the viewAction is SKIPPED,
+        preventing NullPointerExceptions.
+    -->
+    <o:viewParam name="userId" value="#{userEditBean.userId}" required="true"/>
+
+    <!--
+        2. This standard JSF tag calls the 'loadUser' method AFTER the view parameters
+        have been successfully set and validated. This is our data loading trigger.
+    -->
+    <f:viewAction action="#{userEditBean.loadUser}" />
+</f:metadata>
+
+<h:head>
+    <title>Edit User</title>
+</h:head>
+<h:body>
+    <!-- This PrimeFaces component is perfect for displaying messages added in the bean -->
+    <p:growl id="messages" showDetail="true" />
+
+    <!--
+        We only render this panel if the 'user' object is not null.
+        The 'loadUser' method is responsible for populating this object.
+    -->
+    <h:panelGroup rendered="#{userEditBean.user != null}">
+        <h1>Editing User: #{userEditBean.user.name}</h1>
+        <h:form>
+            <p:panelGrid columns="2">
+                <h:outputText value="ID:" />
+                <h:outputText value="#{userEditBean.user.id}" />
+
+                <h:outputText value="Name:" />
+                <p:inputText value="#{userEditBean.user.name}" />
+
+                <h:outputText value="Email:" />
+                <p:inputText value="#{userEditBean.user.email}" />
+
+                <p:commandButton value="Save" />
+            </p:panelGrid>
+        </h:form>
+    </h:panelGroup>
+
+</h:body>
+</html>

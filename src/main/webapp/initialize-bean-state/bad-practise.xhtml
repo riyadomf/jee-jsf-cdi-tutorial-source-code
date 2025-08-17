@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Bad Practice: Initialization in Getter</title>
+</h:head>
+
+<h:body>
+    <h1>❌ Bad Practice: Initializing Data in a Getter Method</h1>
+
+    <p>
+        This page accesses the `items` property from a bean where the data loading logic
+        is placed directly inside the `getItems()` method.
+    </p>
+    <p>
+        <strong>Watch your server's console log!</strong> You will see the "FAKE DATABASE CALL"
+        message printed multiple times for this single page load. This is very inefficient.
+    </p>
+
+    <!--
+        This p:dataTable tag will iterate over the list provided by the getter.
+        The JSF lifecycle may invoke the getter multiple times during this process.
+    -->
+    <p:dataTable value="#{badBean.items}" var="item">
+        <p:column>
+            <h:outputText value="#{item}"/>
+        </p:column>
+    </p:dataTable>
+
+
+</h:body>
+</html>
