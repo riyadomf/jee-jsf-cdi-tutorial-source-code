@@ -13,8 +13,8 @@ public class UserService {
 
     // A fake in-memory "database" table of users.
     private static final Map<Long, User> USERS = Map.of(
-            1L, new User(1L, "John Doe", "john.doe@example.com"),
-            2L, new User(2L, "Jane Smith", "jane.smith@example.com")
+            1L, new User(1L, "Md Omar Faruqe", "riyad.omf@gmail.com"),
+            2L, new User(2L, "Dr. Yunus", "yunus.nobelwinner@yahoo.com")
     );
 
     /**
