@@ -1,4 +1,4 @@
-package com.jee.jeejsfcditutorialsourcecode;
+package com.jee.tutorial.jsfcdiexample;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
